@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -14,9 +16,10 @@ public class EurekaClientApplication {
 	}
 }
 
-class RestController {
-	@RequestMapping("/test")
-	public String test() {
-		return "hello from eureka client service";
-	}
+@RestController
+class MyController{
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public String hello() {
+        return "Hello";
+    }
 }
